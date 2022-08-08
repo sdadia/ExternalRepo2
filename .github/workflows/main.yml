@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: sync up to codecommit
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Conifugre AWS Creds
+        uses: aws-actions/configure-aws-credentials@v1.0.3
+        with:
+          aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Runs a set of commands using the runners shell
+      - name: Code commit repo sync
+        uses: tsgit18/sync-up-to-codecommit-action@v1
+        with:
+          repository_name: ExternalRepo2
+          aws_region: ap-south-1
