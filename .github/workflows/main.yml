@@ -24,7 +24,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Conifugre AWS Creds
-        uses: aws-actions/configure-aws-credentials@v1.0.3
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
