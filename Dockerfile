@@ -3,5 +3,5 @@ FROM public.ecr.aws/docker/library/python:3.9.13-slim-buster
 WORKDIR /tmp
 COPY main.py /tmp
 COPY requirements.txt /tmp
-RUN pip install -r requirements.txt
+RUN pip install -r  requirements.txt
 CMD ["python", "main.py"]
