@@ -20,7 +20,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
 
       # Runs a single command using the runners shell
       - name: Conifugre AWS Creds
@@ -32,7 +36,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Code commit repo sync
-        uses: tsgit18/sync-up-to-codecommit-action@v1
+        uses: youyo/sync-up-to-codecommit-action@v1
         with:
           repository_name: ExternalRepo2
           aws_region: us-east-1
