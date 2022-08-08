@@ -10,9 +10,9 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t dockerdemorepo .
-      - docker tag dockerdemorepo:latest 637994078207.dkr.ecr.us-east-1.amazonaws.com/dockerdemorepo:latest
+      - docker build -t externalrepo2 .
+      - docker tag externalrepo2:latest 637994078207.dkr.ecr.us-east-1.amazonaws.com/externalrepo2:latest
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push 637994078207.dkr.ecr.us-east-1.amazonaws.com/dockerdemorepo:latest
+      - docker push 637994078207.dkr.ecr.us-east-1.amazonaws.com/externalrepo2:latest
